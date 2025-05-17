@@ -1,0 +1,36 @@
+import React from 'react';
+import { Box, styled } from '@mui/material';
+
+const HeroContainer = styled(Box)(({ theme }) => ({
+  width: '100%',
+  height: '700px', // equivalent to h-96 in Tailwind
+  position: 'relative',
+  clipPath: "polygon(0 0, 100% 0, 100% 80%, 85% 100%, 50% 80%, 15% 100%, 0 80%)"
+
+  
+}));
+
+const HeroWrapper = styled(Box)({
+  width: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});
+
+const Hero = () => {
+  return (
+    <HeroWrapper>
+      <HeroContainer sx={{ 
+        backgroundImage: 'url("/network.png")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}>
+        {/* Content can go here */}
+      </HeroContainer>
+
+    </HeroWrapper>
+  );
+};
+
+export default Hero;
