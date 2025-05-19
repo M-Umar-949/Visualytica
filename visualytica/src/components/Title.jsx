@@ -12,7 +12,12 @@ const CardContainer = styled(Box)(({ theme }) => ({
   border: '2px solid #000000', // 🟩 Black stroke added
   boxShadow: '0 40px 40px rgba(0, 0, 0, 0.15)',
   position: 'relative',
+  transition: 'transform 0.3s ease', // ✅ Smooth transition
   overflow: 'hidden',
+    // 🟡 Hover animation
+  '&:hover': {
+    transform: 'scale(1.08)',
+  },
   // Drop shadow effect
   '&::after': {
     content: '""',
