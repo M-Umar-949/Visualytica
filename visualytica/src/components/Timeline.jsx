@@ -140,7 +140,7 @@ const Timeline = () => {
           ) : (
             <Box
               component="img"
-              src="/Timeline.svg" // Your saved SVG path
+              src="/timeline.svg" // Your saved SVG path
               alt="Timeline"
               sx={{
                 width: '100%',
