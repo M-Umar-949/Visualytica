@@ -180,7 +180,7 @@ const LinkedInButton = styled(Box)(({ theme }) => ({
     height: '38px',
   },
   [theme.breakpoints.down('sm')]: {
-    bottom: theme.spacing(35),
+    bottom: theme.spacing(38),
     width: '40px',
     height: '40px',
   },
@@ -196,7 +196,7 @@ const Team = () => {
       id: 1,
       name: 'Dr M.Faisal cheema',
       role: '( Supervisor )',
-      image: '/Umar.png', // Replace with your actual image path
+      image: '/avatar.png', // Replace with your actual image path
       linkedin: '#'
     },
     {
@@ -210,14 +210,14 @@ const Team = () => {
       id: 3,
       name: 'Syed Saad gillani',
       role: '( Back-end developer )',
-      image: '/Umar.png', 
+      image: '/avatar.png', 
       linkedin: 'https://www.linkedin.com/in/saad-gillani-544098273/'
     },
     {
       id: 4,
       name: 'M Owais zahid',
       role: '( Intern )',
-      image: '/Umar.png', 
+      image: '/avatar.png', 
       linkedin: 'https://www.linkedin.com/in/muhammad-owais-zahid-699a52262/'
     }
   ];

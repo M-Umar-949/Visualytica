@@ -19,3 +19,6 @@ html,body {
     25% 94.23%, 0% 50%
   );
 }
+html {
+  scroll-behavior: smooth;
+}
