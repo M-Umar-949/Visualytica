@@ -38,7 +38,7 @@ const ContentContainer = styled(Box)({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '0 24px',
+  padding: '0 0px',
   zIndex: 1,
   textAlign: 'center', // Ensure all content is centered
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Typography, Grid, styled } from '@mui/material';
+import { Box, Typography, Container, useTheme, useMediaQuery } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 // Wrapper with background
 const FeaturesWrapper = styled(Box)(({ theme }) => ({
@@ -13,17 +14,31 @@ const FeaturesWrapper = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '60px 20px',
+  padding: '60px 0',
   position: 'relative',
+  overflow: 'hidden', // Prevent wrapper overflow
 
   [theme.breakpoints.down('sm')]: {
-    // Remove background image on mobile for cleaner look
     backgroundImage: 'none',
     backgroundColor: '#f8f9fa',
-    padding: '40px 16px',
+    padding: '40px 0',
     minHeight: 'auto',
     paddingTop: '60px',
     paddingBottom: '60px',
+  },
+}));
+
+// Container to control max width
+const ContentContainer = styled(Container)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  width: '100%',
+  maxWidth: '1400px',
+  padding: '0 20px',
+  
+  [theme.breakpoints.down('sm')]: {
+    padding: '0 16px',
   },
 }));
 
@@ -42,7 +57,7 @@ const FeatureHeading = styled(Typography)(({ theme }) => ({
     marginBottom: '30px',
   },
   [theme.breakpoints.down('sm')]: {
-    fontSize: '2.5rem',
+    fontSize: '2.2rem',
     marginBottom: '30px',
     color: '#2c3e50',
     fontWeight: 600,
@@ -74,13 +89,13 @@ const FeatureCardBase = styled(Box)(({ theme }) => ({
     borderRadius: '24px',
   },
   [theme.breakpoints.down('sm')]: {
-    // Mobile improvements
     backgroundColor: '#ffffff',
     border: '2px solid #E6A151',
-    padding: '30px 20px',
-    marginBottom: '15px',
+    padding: '24px 16px',
     borderRadius: '16px',
     boxShadow: '0 4px 15px rgba(230, 161, 81, 0.15)',
+    width: '100%',
+    maxWidth: '280px',
     
     '&:hover': {
       transform: 'translateY(-3px)',
@@ -93,30 +108,44 @@ const FeatureCardBase = styled(Box)(({ theme }) => ({
 // Large Feature Card (for outer cards)
 const LargeFeatureCard = styled(FeatureCardBase)(({ theme }) => ({
   height: '320px',
+  width: '270px',
   
+  [theme.breakpoints.down('lg')]: {
+    width: '250px',
+    height: '300px',
+  },
   [theme.breakpoints.down('md')]: {
+    width: '220px',
     height: '280px',
   },
   [theme.breakpoints.down('sm')]: {
     height: 'auto',
-    minHeight: '160px',
+    minHeight: '180px',
     width: '100%',
-    maxWidth: '320px',
+    maxWidth: '280px',
   },
 }));
 
 // Small Feature Card (for middle cards)
 const SmallFeatureCard = styled(FeatureCardBase)(({ theme }) => ({
   height: '280px',
+  width: '240px',
+  marginTop: '40px',
   
+  [theme.breakpoints.down('lg')]: {
+    width: '220px',
+    height: '260px',
+  },
   [theme.breakpoints.down('md')]: {
+    width: '200px',
     height: '240px',
   },
   [theme.breakpoints.down('sm')]: {
     height: 'auto',
-    minHeight: '160px',
+    minHeight: '180px',
     width: '100%',
-    maxWidth: '320px',
+    maxWidth: '280px',
+    marginTop: '0', // Reset margin on mobile
   },
 }));
 
@@ -158,6 +187,7 @@ const FeatureTitle = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   color: '#ffffff',
   textAlign: 'center',
+  lineHeight: 1.3,
   
   [theme.breakpoints.down('md')]: {
     fontSize: '1.3rem',
@@ -170,47 +200,54 @@ const FeatureTitle = styled(Typography)(({ theme }) => ({
   },
 }));
 
-// Custom grid container for feature cards layout
+// Fixed grid container for feature cards layout
 const FeaturesGrid = styled(Box)(({ theme }) => ({
   display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'center',
-  gap: '40px',
+  alignItems: 'flex-start',
+  gap: '20px',
   width: '100%',
-  maxWidth: '1400px',
+  maxWidth: '1200px',
   
+  [theme.breakpoints.down('lg')]: {
+    gap: '25px',
+    maxWidth: '1000px',
+  },
   [theme.breakpoints.down('md')]: {
-    gap: '30px',
+    gap: '20px',
+    maxWidth: '1000px',
   },
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
-    gap: '12px',
+    gap: '20px',
     alignItems: 'center',
     maxWidth: '100%',
-    padding: '0 20px',
+    padding: '0',
   },
 }));
 
 const Features = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   // Feature data
   const featuresData = [
     {
-      icon: "/icons/upload.svg", // Replace with your actual icon path
+      icon: "/icons/upload.svg",
       title: "Upload network data",
       isLarge: true
     },
     {
-      icon: "/icons/Visualize.svg", // Replace with your actual icon path
+      icon: "/icons/Visualize.svg",
       title: "Visualize 15+ graphs",
       isLarge: false
     },
     {
-      icon: "/icons/interactivit.svg", // Replace with your actual icon path
+      icon: "/icons/interactivit.svg",
       title: "Analyze and interact graphs",
       isLarge: false
     },
     {
-      icon: "/icons/dashboard.svg", // Replace with your actual icon path
+      icon: "/icons/dashboard.svg",
       title: "Develop dashboards",
       isLarge: true
     }
@@ -218,30 +255,24 @@ const Features = () => {
 
   return (
     <FeaturesWrapper>
-      <FeatureHeading variant="h2">TOP FEATURES</FeatureHeading>
-      
-      <FeaturesGrid>
-        {featuresData.map((feature, index) => {
-          const CardComponent = feature.isLarge ? LargeFeatureCard : SmallFeatureCard;
-          
-          return (
-            <CardComponent key={index} sx={{ 
-              flex: feature.isLarge ? '0 0 270px' : '0 0 240px',
-              [theme => theme.breakpoints.down('md')]: {
-                flex: feature.isLarge ? '0 0 230px' : '0 0 210px',
-              },
-              [theme => theme.breakpoints.down('sm')]: {
-                flex: 'none',
-              }
-            }}>
-              <IconContainer>
-                <img src={feature.icon} alt={feature.title} />
-              </IconContainer>
-              <FeatureTitle>{feature.title}</FeatureTitle>
-            </CardComponent>
-          );
-        })}
-      </FeaturesGrid>
+      <ContentContainer>
+        <FeatureHeading variant="h2">TOP FEATURES</FeatureHeading>
+        
+        <FeaturesGrid>
+          {featuresData.map((feature, index) => {
+            const CardComponent = feature.isLarge ? LargeFeatureCard : SmallFeatureCard;
+            
+            return (
+              <CardComponent key={index}>
+                <IconContainer>
+                  <img src={feature.icon} alt={feature.title} />
+                </IconContainer>
+                <FeatureTitle>{feature.title}</FeatureTitle>
+              </CardComponent>
+            );
+          })}
+        </FeaturesGrid>
+      </ContentContainer>
     </FeaturesWrapper>
   );
 };

@@ -4,6 +4,10 @@ import Hero from '@/components/Hero';
 import InfoCard from '@/components/Title';
 import Features from '@/components/Features';
 import Tech from '@/components/Tech';
+import Team from '@/components/Team';
+import Timeline from '@/components/Timeline';
+import Demo from '@/components/Demo';
+import Footer from '@/components/Footer';
 
 
 export default function HomePage() {
@@ -18,6 +22,10 @@ export default function HomePage() {
       </div>
       <Features/>
       <Tech/>
+      <Team/>
+      <Timeline/>
+      <Demo/>
+      <Footer/>
     </>
   );
 }
