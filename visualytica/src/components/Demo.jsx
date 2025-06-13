@@ -42,7 +42,7 @@ const Demo = () => {
             sx={{
               width: '100%',
               maxWidth: '800px',
-              height: '450px',
+              height: '400px',
               borderRadius: '12px',
               boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
               outline: 'none'
