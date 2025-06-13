@@ -115,7 +115,7 @@ const Footer = () => {
               px: isMobile ? 1 : 0
             }}
           >
-            We're actively collaborating with researchers, analysts, and early adopters.
+            The feedback is appreciated !!! We're actively collaborating with researchers, analysts, and early adopters.
             Get in touch to learn more, schedule a demo, or explore partnership opportunities.
           </Typography>
 

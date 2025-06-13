@@ -33,17 +33,16 @@ const Demo = () => {
             Demo Video
           </Typography>
 
-          {/* Video */}
+         { /* Video */}
           <Box
-            component="video"
-            src="/demo.mov" // Replace with your actual video path
-            autoPlay
-            loop
-            muted
-            playsInline
+            component="iframe"
+            src="https://www.youtube.com/embed/lKXikJkgbK8?loop=1&playlist=lKXikJkgbK8"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
             sx={{
               width: '100%',
               maxWidth: '800px',
+              height: '450px',
               borderRadius: '12px',
               boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
               outline: 'none'
