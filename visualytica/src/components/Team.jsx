@@ -202,7 +202,7 @@ const Team = () => {
     {
       id: 2,
       name: 'Muhammad Umar',
-      role: '( Front-end developer )',
+      role: '( Front-end engineer )',
       image: '/Umar.png', 
       linkedin: 'https://www.linkedin.com/in/muhammad-umar-796506248/'
     },
